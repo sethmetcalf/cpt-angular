@@ -1,0 +1,189 @@
+<main>
+    <div class="logo">
+        <img class="center-block" src="/images/TuitionTellerLogo.png"><br>
+    </div>
+    <br>
+    <section>
+        <br>
+        <div class="progress-guide">
+            <div class="col-xs-4 left-header"> Select Products </div>
+            <div class="col-xs-4 center-header"> Checkout </div>
+            <div class="col-xs-4 right-header"> Confirmation </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <form class="form-horizontal column-left">
+            <div class="products">
+                <div class="form-group">
+                    <label class="control-label col-xs-2">Product</label>
+                    <div class="col-xs-offset-2">
+                        <button type="button" class="btn btn-default dropdown-toggle price-input" ng-disabled="disabled">
+                            Choose Category <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">Product</label>
+                    <div class="col-xs-offset-2">
+                        <button type="button" class="btn btn-default dropdown-toggle price-input" ng-disabled="disabled">
+                            Choose Product <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label col-xs-2">Account</label>
+                    <div class="col-xs-offset-2">
+                        <input  class="form-control account-input" placeholder="Enter Account ID">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label col-xs-2">Price</label>
+                    <div class="col-xs-offset-2">
+                        <input  class="form-control price-input" placeholder="$0.00">
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<div class="col-xs-offset-2 col-xs-10">-->
+                        <!--<div class="checkbox">-->
+                            <!--<label><input type="checkbox"> Remember me</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <div class="col-xs-offset-2">
+                        <button type="submit" class="btn btn-primary">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--<form class="form-horizontal" ng-controller="DropdownCtrl">-->
+                <!--<div class="btn-group form-group" dropdown is-open="status.isopen">-->
+                   <!--<label for="departmentDropdown" class="selectDepartment">Department:-->
+                       <!--<div class="">-->
+                           <!--<button type="button" class="btn btn-default dropdown-toggle form-control" ng-disabled="disabled" id="departmentDropdown">-->
+                                <!--Make Choice <span class="caret"></span>-->
+                            <!--</button>-->
+                       <!--</div>-->
+                   <!--</label>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li ng-repeat="choice in items">-->
+                            <!--<a href>{{choice}}</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--&lt;!&ndash;<div class="btn-group" dropdown is-open="status.isopen">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label for="categoryDropdown" class="selectCategory">Category:&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button type="button" class="btn btn-default dropdown-toggle" ng-disabled="disabled" id="categoryDropdown">&ndash;&gt;-->
+                        <!--&lt;!&ndash;Make Choice <span class="caret"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<ul class="dropdown-menu">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li ng-repeat="choice in items">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a href>{{choice}}</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</form>-->
+        <div class="container-fluid column-right">
+            <div class="row-fluid">
+                <div class="span8">
+
+                    <!-- items -->
+                    <table class="table table-bordered">
+
+                        <!-- header -->
+                        <tr class="well">
+                            <td><b>Item</b></td>
+                            <td class="tdCenter"><b>Quantity</b></td>
+                            <td class="tdRight"><b>Price</b></td>
+                            <td />
+                        </tr>
+
+                        <!-- empty cart message -->
+                        <tr ng-hide="cart.getTotalCount() > 0" >
+                            <td class="tdCenter" colspan="4">
+                                Your cart is empty.
+                            </td>
+                        </tr>
+
+                        <!-- cart items -->
+                        <tr ng-repeat="item in cart.items | orderBy:'name'">
+                            <td>{{item.name}}</td>
+                            <td class="tdCenter">
+                                <div class="input-append">
+                                    <!-- use type=tel instead of  to prevent spinners -->
+                                    <input
+                                            class="span3 text-center" type="tel"
+                                            ng-model="item.quantity"
+                                            ng-change="cart.saveItems()" />
+                                    <button
+                                            class="btn btn-success" type="button"
+                                            ng-disabled="item.quantity >= 1000"
+                                            ng-click="cart.addItem(item.sku, item.name, item.price, +1)">+</button>
+                                    <button
+                                            class="btn btn-inverse" type="button"
+                                            ng-disabled="item.quantity <= 1"
+                                            ng-click="cart.addItem(item.sku, item.name, item.price, -1)">-</button>
+                                </div>
+                            </td>
+                            <td class="tdRight">{{item.price * item.quantity | currency}}</td>
+                            <td class="tdCenter" title="remove from cart">
+                                <a href="" ng-click="cart.addItem(item.sku, item.name, item.price, -10000000)" >
+                                    <i class="icon-remove" />
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- footer -->
+                        <tr class="well">
+                            <td><b>Total</b></td>
+                            <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
+                            <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
+                            <td />
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- buttons -->
+                <div class="span4">
+                    <p class="text-info">
+                        <button class="btn btn-warning"
+                                onclick="window.location.href='default.htm'">
+                            <i class="icon-chevron-left" /> Checkout
+                        </button>
+
+                    <br /><br />
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+<!--<div class="jumbotron">-->
+  <!--<h1>'Allo, 'Allo!</h1>-->
+  <!--<p class="lead">-->
+    <!--<img src="images/yeoman.png" alt="I'm Yeoman"><br>-->
+    <!--Always a pleasure scaffolding your apps.-->
+  <!--</p>-->
+  <!--<p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
+<!--</div>-->
+
+<!--<div class="row marketing">-->
+  <!--<h4>HTML5 Boilerplate</h4>-->
+  <!--<p>-->
+    <!--HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.-->
+  <!--</p>-->
+
+  <!--<h4>Angular</h4>-->
+  <!--<p>-->
+    <!--AngularJS is a toolset for building the framework most suited to your application development.-->
+  <!--</p>-->
+
+  <!--<h4>Karma</h4>-->
+  <!--<p>Spectacular Test Runner for JavaScript.</p>-->
+<!--</div>-->

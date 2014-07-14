@@ -1,0 +1,18 @@
+[
+    {"Departments":
+    {
+        "Department":
+            [
+                {
+                 "id": 0001,
+                 "department": "BYU",
+                 "category":
+                     [
+                         {"type": "New License", "price": "25"},
+                         {"type": "License Renewal", "price": "10"}
+                     ]
+
+            ]
+    }
+    }
+]
