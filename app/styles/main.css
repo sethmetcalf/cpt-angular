@@ -14,7 +14,7 @@ body {
 
 /* Custom page header */
 .logo {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 2px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -111,4 +111,18 @@ body {
     margin-right: auto;
     text-align: center
 }
+    /* numbered buttons */
+    #status-buttons                 {  }
+    #status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
+    #status-buttons a:hover         { text-decoration:none; }
+
+    /* we will style the span as the circled number */
+    #status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
+        border-radius:50%; }
+
+    /* active buttons turn light green-blue*/
+    #status-buttons a.active span   { background:#00BC8C; }
+}
+.quantity-input {
+    width: 60px
 }

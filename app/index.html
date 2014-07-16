@@ -17,22 +17,15 @@
   </head>
   <body ng-app="cpCartApp">
 
-    <div class="container-fluid">
+    <div class="container">
 
-        <!--<div ui-view></div>-->
-      <div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>
+        <div ui-view></div>
+      <!--<div ng-include="'views/main.html'" ng-controller="MainCtrl"></div>-->
 
 
     </div>
 
 
-
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -43,7 +36,6 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

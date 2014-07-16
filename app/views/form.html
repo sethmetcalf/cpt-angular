@@ -1,1 +1,21 @@
-<p>This is the form view.</p>
+<div class="logo">
+    <img class="center-block" src="/images/TuitionTellerLogo.png"><br>
+</div>
+<br>
+        <div id="form-container">
+
+            <div class="text-center" id="status-buttons">
+                <a ui-sref-active="active" ui-sref=".products"><span>1</span> Choose Items</a>
+                <a ui-sref-active="active" ui-sref=".checkout"><span>2</span> Checkout</a>
+                <a ui-sref-active="active" ui-sref=".confirm"><span>3</span> Confirmation</a>
+            </div>
+
+            <div id="product-form" ng-submit="processForm()">
+                <div id="form-views" ui-view></div>
+            </div>
+
+        </div>
+
+        <pre>
+            {{ formData }}
+        </pre>

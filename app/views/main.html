@@ -16,7 +16,7 @@
         <form class="form-horizontal column-left">
             <div class="products">
                 <div class="form-group">
-                    <label class="control-label col-xs-2">Product</label>
+                    <label class="control-label col-xs-5">Product</label>
                     <div class="col-xs-offset-2">
                         <button type="button" class="btn btn-default dropdown-toggle price-input" ng-disabled="disabled">
                             Choose Category <span class="caret"></span>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-xs-2">Product</label>
+                    <label class="control-label col-xs-5">Product</label>
                     <div class="col-xs-offset-2">
                         <button type="button" class="btn btn-default dropdown-toggle price-input" ng-disabled="disabled">
                             Choose Product <span class="caret"></span>
@@ -32,26 +32,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label  class="control-label col-xs-2">Account</label>
+                    <label  class="control-label col-xs-5">Account</label>
                     <div class="col-xs-offset-2">
                         <input  class="form-control account-input" placeholder="Enter Account ID">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label  class="control-label col-xs-2">Price</label>
+                    <label  class="control-label col-xs-5">Price</label>
                     <div class="col-xs-offset-2">
-                        <input  class="form-control price-input" placeholder="$0.00">
+                        <input  class="form-control price-input" placeholder="0.00">
                     </div>
                 </div>
-                <!--<div class="form-group">-->
-                    <!--<div class="col-xs-offset-2 col-xs-10">-->
-                        <!--<div class="checkbox">-->
-                            <!--<label><input type="checkbox"> Remember me</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
                 <div class="form-group">
+                    <label  class="control-label col-xs-5">Quantity</label>
                     <div class="col-xs-offset-2">
+                        <input  type="number" class="form-control quantity-input" value="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-6">
                         <button type="submit" class="btn btn-primary">Add To Cart</button>
                     </div>
                 </div>
@@ -72,18 +71,18 @@
                         <!--</li>-->
                     <!--</ul>-->
                 <!--</div>-->
-            <!--&lt;!&ndash;<div class="btn-group" dropdown is-open="status.isopen">&ndash;&gt;-->
-                <!--&lt;!&ndash;<label for="categoryDropdown" class="selectCategory">Category:&ndash;&gt;-->
-                    <!--&lt;!&ndash;<button type="button" class="btn btn-default dropdown-toggle" ng-disabled="disabled" id="categoryDropdown">&ndash;&gt;-->
-                        <!--&lt;!&ndash;Make Choice <span class="caret"></span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                <!--&lt;!&ndash;</label>&ndash;&gt;-->
-                <!--&lt;!&ndash;<ul class="dropdown-menu">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<li ng-repeat="choice in items">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<a href>{{choice}}</a>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<!--<div class="btn-group" dropdown is-open="status.isopen">-->-->
+                <!--<!--<label for="categoryDropdown" class="selectCategory">Category:-->-->
+                    <!--<!--<button type="button" class="btn btn-default dropdown-toggle" ng-disabled="disabled" id="categoryDropdown">-->-->
+                        <!--<!--Make Choice <span class="caret"></span>-->-->
+                    <!--<!--</button>-->-->
+                <!--<!--</label>-->-->
+                <!--<!--<ul class="dropdown-menu">-->-->
+                    <!--<!--<li ng-repeat="choice in items">-->-->
+                        <!--<!--<a href>{{choice}}</a>-->-->
+                    <!--<!--</li>-->-->
+                <!--<!--</ul>-->-->
+            <!--<!--</div>-->-->
         <!--</form>-->
         <div class="container-fluid column-right">
             <div class="row-fluid">
@@ -160,30 +159,3 @@
         </div>
     </section>
 </main>
-
-
-
-
-<!--<div class="jumbotron">-->
-  <!--<h1>'Allo, 'Allo!</h1>-->
-  <!--<p class="lead">-->
-    <!--<img src="images/yeoman.png" alt="I'm Yeoman"><br>-->
-    <!--Always a pleasure scaffolding your apps.-->
-  <!--</p>-->
-  <!--<p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>-->
-<!--</div>-->
-
-<!--<div class="row marketing">-->
-  <!--<h4>HTML5 Boilerplate</h4>-->
-  <!--<p>-->
-    <!--HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.-->
-  <!--</p>-->
-
-  <!--<h4>Angular</h4>-->
-  <!--<p>-->
-    <!--AngularJS is a toolset for building the framework most suited to your application development.-->
-  <!--</p>-->
-
-  <!--<h4>Karma</h4>-->
-  <!--<p>Spectacular Test Runner for JavaScript.</p>-->
-<!--</div>-->

@@ -14,6 +14,5 @@ angular.module('cpCartApp')
     $scope.formData = {};
 
     $scope.processform = function() {
-        alert('Create process function!')
     };
   });
