@@ -4,11 +4,29 @@
 <br>
         <div id="form-container">
 
-            <div class="text-center" id="status-buttons">
-                <a ui-sref-active="active" ui-sref=".products"><span>1</span> Choose Items</a>
-                <a ui-sref-active="active" ui-sref=".checkout"><span>2</span> Checkout</a>
-                <a ui-sref-active="active" ui-sref=".confirm"><span>3</span> Confirmation</a>
-            </div>
+            <ul class="status-buttons text-center">
+                <li class="col-xs-4">
+                    <a ui-sref-active="active" ui-sref=".products">
+                        <span class="circle">1</span>
+                        <div class="status-label">Profile</div>
+                        <div class="status-bar"></div>
+                    </a>
+                </li>
+                <li class="col-xs-4">
+                    <a ui-sref-active="active" ui-sref=".checkout">
+                        <span>2</span>
+                        <div class="status-label">Checkout</div>
+                        <div class="staus-bar"></div>
+                    </a>
+                </li>
+                <li class="col-xs-4">
+                    <a ui-sref-active="active" ui-sref=".confirm">
+                        <span>3</span>
+                        <div class="staus-label">Payment</div>
+                        <div class="status-bar"></div>
+                    </a>
+                </li>
+            </ul>
 
             <div id="product-form" ng-submit="processForm()">
                 <div id="form-views" ui-view></div>

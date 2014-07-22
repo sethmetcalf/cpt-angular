@@ -8,13 +8,8 @@
  * Controller of the cpCartApp
  */
 angular.module('cpCartApp')
-  .controller('DropdownCtrl', function ($scope) {
-        $scope.items = [
-            'The first choice!',
-            'And another choice for you.',
-            'but wait! A third!'
-        ];
-
+  .controller('DropdownCtrl', ['$scope', 'States', function ($scope, States) {
+        $scope.states = data;
         $scope.status = {
             isopen: false
         };
@@ -28,4 +23,5 @@ angular.module('cpCartApp')
             $event.stopPropagation();
             $scope.status.isopen = !$scope.status.isopen;
         };
-    });
+    }
+])

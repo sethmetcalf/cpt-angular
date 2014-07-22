@@ -1,342 +1,572 @@
-<input type="hidden" name="RequireAccount" id="RequireAccount" value="<cfoutput>#opterm.requireaccount#</cfoutput>">
-<fieldset>
-<div class="control-group" style="white-space: nowrap;">
-    <label class="control-label" for="Account" id="lblAccount"><cfoutput>#account_label#</cfoutput></label>
-    <div class="controls">
-        <div class="input-append">
-            <cfoutput>
-                <input type="text" class="input-large" name="Account" id="Account" value="#clean_str(account)#" #readonly_str(account)#>
-            </cfoutput>
+<container class="col-xs-4">
+    <h4 class="text-center">Payer Information</h4>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-xs-4">Account</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" placeholder="Enter Account ID" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">First Name</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                    <!--Choose Product <span class="caret"></span>-->
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">Last Name</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="control-label col-xs-4">Country</label>
+            <div class="col-xs-offset-2">
+                <select class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-ng-model="currentState" data-ng-options="state as state.name for state in states" ng-disabled="disabled"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">Address 1</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">Address 2</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">City</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="control-label col-xs-4">State</label>
+            <div class="col-xs-6">
+                <select class="form-control input-sm" data-toggle="dropdown" data-ng-model="currentItem" data-ng-options="item as item.name for item in currentState.items"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">*Postal Code</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">Email</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">Phone</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-model="Product1" ng-disabled="disabled">
+                </input>
+            </div>
         </div>
     </div>
-</div>
-<cfset query = get_custom_fields(op)>
-<cfoutput query="query">
-    <div class="control-group">
-        <label class="control-label" for="#name#">#label#</label>
-        <div class="controls">
-            <input type="text" class="input-large" name="#name#" id="#name#" value="#defaultvalue#" maxlength="#maxlength#">
-        </div>
-    </div>
-</cfoutput>
-<div class="control-group">
-    <label class="control-label" for="FirstName">First Name</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="text" class="input-large" name="FirstName" id="FirstName" value="#clean_str(firstname)#" #readonly_str(firstname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group" style="white-space: nowrap;">
-    <label class="control-label" for="LastName">Last Name</label>
-    <div class="controls">
-        <div class="input-append">
-            <cfoutput>
-                <input type="text" class="input-large" name="LastName" id="LastName" value="#clean_str(lastname)#" #readonly_str(lastname)#>
-            </cfoutput>
-        </div>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="Country">Country</label>
-    <div class="controls">
-        <select id="Country" name="Country" onchange="selectCountry();" <cfoutput>#disabled_str(country)#</cfoutput>>
-        <option value="USA" <cfif ucase(clean_str(country)) == "USA">selected="selected"</cfif>>USA</option>
-        <option value="CAN" <cfif ucase(clean_str(country)) == "CAN">selected="selected"</cfif>>Canada</option>
-        </select>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="name">Address 1</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="text" class="input-large" name="Address1" id="Address1" value="#clean_str(address1)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="name">Address 2</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="text" class="input-large" name="Address2" id="Address2" value="#clean_str(address2)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="name">City</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="text" class="input-large" name="City" id="City" value="#clean_str(city)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group" id="GrpProvince">
-    <label class="control-label" for="validateSelect">Province</label>
-    <div class="controls">
-        <select id="Province" name="Province" <cfoutput>#disabled_str(province)#</cfoutput>>
-        <option selected="selected" value="">Select a Province</option>
-        <option value="AB" <cfif ucase(clean_str(province)) == "AB">selected="selected"</cfif>>Alberta</option>
-        <option value="BC" <cfif ucase(clean_str(province)) == "BC">selected="selected"</cfif>>British Columbia</option>
-        <option value="MB" <cfif ucase(clean_str(province)) == "MB">selected="selected"</cfif>>Manitoba</option>
-        <option value="NB" <cfif ucase(clean_str(province)) == "NB">selected="selected"</cfif>>New Brunswick</option>
-        <option value="NL" <cfif ucase(clean_str(province)) == "NL">selected="selected"</cfif>>Newfoundland and Labrador</option>
-        <option value="NS" <cfif ucase(clean_str(province)) == "NS">selected="selected"</cfif>>Nova Scotia</option>
-        <option value="ON" <cfif ucase(clean_str(province)) == "ON">selected="selected"</cfif>>Ontario</option>
-        <option value="PE" <cfif ucase(clean_str(province)) == "PE">selected="selected"</cfif>>Prince Edward Island</option>
-        <option value="QC" <cfif ucase(clean_str(province)) == "QC">selected="selected"</cfif>>Quebec</option>
-        <option value="SK" <cfif ucase(clean_str(province)) == "SK">selected="selected"</cfif>>Saskatchewan</option>
-        <option value="NT" <cfif ucase(clean_str(province)) == "NT">selected="selected"</cfif>>Northwest Territories</option>
-        <option value="NU" <cfif ucase(clean_str(province)) == "NU">selected="selected"</cfif>>Nunavut</option>
-        <option value="YT" <cfif ucase(clean_str(province)) == "YT">selected="selected"</cfif>>Yukon</option>
-        </select>
-    </div>
-</div>
-<div class="control-group" id="GrpState">
-    <label class="control-label" for="validateSelect">State</label>
-    <div class="controls">
-        <select id="State" name="State" <cfoutput>#disabled_str(state)#</cfoutput>>
-        <option selected="selected" value="">Select a State</option>
-        <option value="AL" <cfif ucase(clean_str(state)) == "AL">selected="selected"</cfif>>Alabama</option>
-        <option value="AK" <cfif ucase(clean_str(state)) == "AK">selected="selected"</cfif>>Alaska</option>
-        <option value="AZ" <cfif ucase(clean_str(state)) == "AZ">selected="selected"</cfif>>Arizona</option>
-        <option value="AR" <cfif ucase(clean_str(state)) == "AR">selected="selected"</cfif>>Arkansas</option>
-        <option value="CA" <cfif ucase(clean_str(state)) == "CA">selected="selected"</cfif>>California</option>
-        <option value="CO" <cfif ucase(clean_str(state)) == "CO">selected="selected"</cfif>>Colorado</option>
-        <option value="CT" <cfif ucase(clean_str(state)) == "CT">selected="selected"</cfif>>Connecticut</option>
-        <option value="DE" <cfif ucase(clean_str(state)) == "DE">selected="selected"</cfif>>Delaware</option>
-        <option value="DC" <cfif ucase(clean_str(state)) == "DC">selected="selected"</cfif>>Dist of Columbia</option>
-        <option value="FL" <cfif ucase(clean_str(state)) == "FL">selected="selected"</cfif>>Florida</option>
-        <option value="GA" <cfif ucase(clean_str(state)) == "GA">selected="selected"</cfif>>Georgia</option>
-        <option value="HI" <cfif ucase(clean_str(state)) == "HI">selected="selected"</cfif>>Hawaii</option>
-        <option value="ID" <cfif ucase(clean_str(state)) == "ID">selected="selected"</cfif>>Idaho</option>
-        <option value="IL" <cfif ucase(clean_str(state)) == "IL">selected="selected"</cfif>>Illinois</option>
-        <option value="IN" <cfif ucase(clean_str(state)) == "IN">selected="selected"</cfif>>Indiana</option>
-        <option value="IA" <cfif ucase(clean_str(state)) == "IA">selected="selected"</cfif>>Iowa</option>
-        <option value="KS" <cfif ucase(clean_str(state)) == "KS">selected="selected"</cfif>>Kansas</option>
-        <option value="KY" <cfif ucase(clean_str(state)) == "KY">selected="selected"</cfif>>Kentucky</option>
-        <option value="LA" <cfif ucase(clean_str(state)) == "LA">selected="selected"</cfif>>Louisiana</option>
-        <option value="ME" <cfif ucase(clean_str(state)) == "ME">selected="selected"</cfif>>Maine</option>
-        <option value="MD" <cfif ucase(clean_str(state)) == "MD">selected="selected"</cfif>>Maryland</option>
-        <option value="MA" <cfif ucase(clean_str(state)) == "MA">selected="selected"</cfif>>Massachusetts</option>
-        <option value="MI" <cfif ucase(clean_str(state)) == "MI">selected="selected"</cfif>>Michigan</option>
-        <option value="MN" <cfif ucase(clean_str(state)) == "MN">selected="selected"</cfif>>Minnesota</option>
-        <option value="MS" <cfif ucase(clean_str(state)) == "MS">selected="selected"</cfif>>Mississippi</option>
-        <option value="MO" <cfif ucase(clean_str(state)) == "MO">selected="selected"</cfif>>Missouri</option>
-        <option value="MT" <cfif ucase(clean_str(state)) == "MT">selected="selected"</cfif>>Montana</option>
-        <option value="NE" <cfif ucase(clean_str(state)) == "NE">selected="selected"</cfif>>Nebraska</option>
-        <option value="NV" <cfif ucase(clean_str(state)) == "NV">selected="selected"</cfif>>Nevada</option>
-        <option value="NH" <cfif ucase(clean_str(state)) == "NH">selected="selected"</cfif>>New Hampshire</option>
-        <option value="NJ" <cfif ucase(clean_str(state)) == "NJ">selected="selected"</cfif>>New Jersey</option>
-        <option value="NM" <cfif ucase(clean_str(state)) == "NM">selected="selected"</cfif>>New Mexico</option>
-        <option value="NY" <cfif ucase(clean_str(state)) == "NY">selected="selected"</cfif>>New York</option>
-        <option value="NC" <cfif ucase(clean_str(state)) == "NC">selected="selected"</cfif>>North Carolina</option>
-        <option value="ND" <cfif ucase(clean_str(state)) == "ND">selected="selected"</cfif>>North Dakota</option>
-        <option value="OH" <cfif ucase(clean_str(state)) == "OH">selected="selected"</cfif>>Ohio</option>
-        <option value="OK" <cfif ucase(clean_str(state)) == "OK">selected="selected"</cfif>>Oklahoma</option>
-        <option value="OR" <cfif ucase(clean_str(state)) == "OR">selected="selected"</cfif>>Oregon</option>
-        <option value="PA" <cfif ucase(clean_str(state)) == "PA">selected="selected"</cfif>>Pennsylvania</option>
-        <option value="PR" <cfif ucase(clean_str(state)) == "PR">selected="selected"</cfif>>Puerto Rico</option>
-        <option value="RI" <cfif ucase(clean_str(state)) == "RI">selected="selected"</cfif>>Rhode Island</option>
-        <option value="SC" <cfif ucase(clean_str(state)) == "SC">selected="selected"</cfif>>South Carolina</option>
-        <option value="SD" <cfif ucase(clean_str(state)) == "SD">selected="selected"</cfif>>South Dakota</option>
-        <option value="TN" <cfif ucase(clean_str(state)) == "TN">selected="selected"</cfif>>Tennessee</option>
-        <option value="TX" <cfif ucase(clean_str(state)) == "TX">selected="selected"</cfif>>Texas</option>
-        <option value="UT" <cfif ucase(clean_str(state)) == "UT">selected="selected"</cfif>>Utah</option>
-        <option value="VT" <cfif ucase(clean_str(state)) == "VT">selected="selected"</cfif>>Vermont</option>
-        <option value="VA" <cfif ucase(clean_str(state)) == "VA">selected="selected"</cfif>>Virginia</option>
-        <option value="VI" <cfif ucase(clean_str(state)) == "VI">selected="selected"</cfif>>Virgin Islands</option>
-        <option value="WA" <cfif ucase(clean_str(state)) == "WA">selected="selected"</cfif>>Washington</option>
-        <option value="WV" <cfif ucase(clean_str(state)) == "WV">selected="selected"</cfif>>West Virginia</option>
-        <option value="WI" <cfif ucase(clean_str(state)) == "WI">selected="selected"</cfif>>Wisconsin</option>
-        <option value="WY" <cfif ucase(clean_str(state)) == "WY">selected="selected"</cfif>>Wyoming</option>
-        </select>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" id="lblZipCode" for="name">*Zip Code</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="text" class="input-large" name="ZipCode" id="ZipCode" value="#clean_str(zipcode)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="name">Email</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="email" class="input-large" name="Email" id="Email" value="#clean_str(email)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="name">Phone</label>
-    <div class="controls">
-        <cfoutput>
-            <input type="tel" class="input-large" name="Phone" id="Phone" value="#clean_str(phone)#" #readonly_str(lastname)#>
-        </cfoutput>
-    </div>
-</div>
+</container>
 
-<div class="span24">
-    <div class="widget">
-        <div class="widget-content" style="border: 0; border-radius: 0;">
-            <form method="post" class="form-horizontal" name="form" id="portalform">
-                <p>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td style="border-right: 1px solid #AAA; vertical-align: top; padding-right: 15px;">
-                            <h4 style="text-align: center">Payer Information</h4>
-                            <p>
-                                <cfinclude template="payer_info.cfm">
-                            </p>
-                        </td>
-                        <td style="vertical-align: top; padding-right: 15px; padding-left: 15px;">
-                            <h4 style="text-align: center">Payment Information</h4>
-                            <p>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td style="border-bottom: 1px solid #AAA; vertical-align: top; padding-bottom: 10px;">
-                                        <fieldset>
-                                            <div class="control-group">
-                                                <label class="control-label" for="Amount">*Payment Amount</label>
-                                                <div class="controls">
-                                                    <input type="text" class="input-large" name="Amount" id="Amount">
-                                                </div>
-                                            </div>
-                                            <div class="control-group">
-                                                <label class="control-label" for="textarea">Comments</label>
-                                                <div class="controls">
-                                                    <textarea class="input-large" name="Comment" id="Comment" rows="3"></textarea>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-top: 25px;">
-                                        <cfinclude template="payment_info.cfm">
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                </p>
-                </td>
-                <td style="border-left: 1px solid #AAA; vertical-align: top; padding-left: 10px;">
-                    <h4 style="text-align: center;">Instructions</h4>
-                    <p>
-                        <cfoutput>#get_disclaimer_text(op)#</cfoutput>
-                    </p>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                </p>
-            </form>
+<container class="col-xs-6">
+    <h4 class="text-center">Payment Information</h4>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-xs-4">*Payment Method</label>
+            <div class="col-xs-5">
+                <select class="form-control input-sm" ng-model="type" ng-options="type for type in paymentMethod" ng-disabled="disabled">
+                 </select>
+            </div>
         </div>
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="validateSelect">*Payment Method</label>
-    <div class="controls">
-        <select id="PaymentMethod" name="PaymentMethod" onchange="setPaymentMethod();" <cfoutput>#disabled_str(paymentmethod)#</cfoutput>>
-        <option value="CC" <cfif ucase(clean_str(paymentmethod)) == "CC">selected="selected"</cfif>>Credit/Debit Card</option>
-        <option value="ACH"<cfif ucase(clean_str(paymentmethod)) == "ACH">selected="selected"</cfif>>ACH / E-Check</option>
-        </select>
-    </div>
-</div>
-<div id="GrpCardInfo">
-    <div class="control-group">
-        <label class="control-label" for="PayerName">*Name on Card</label>
-        <div class="controls">
-            <cfoutput>
-                <input type="text" class="input-large" name="CardName" id="CardName" value="#clean_str(cardname)#" #readonly_str(cardname)#>
-            </cfoutput>
+        <div class="form-group" ng-show="type == 'Credit/Debit Card'">
+            <label class="control-label col-xs-4">*Name on Card</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                </input>
+            </div>
         </div>
-    </div>
-    <div class="control-group">
-        <span id="CardNumValidIcon"></span>
-        <label class="control-label" for="CardNum">*Card Number</label>
-        <div class="controls" id="divCardValid" style="font-weight: bold;"></div>
-        <div class="controls">
-            <cfoutput>
-                <input type="text" class="input-large" name="CardNum" id="CardNum" onkeyup="getCardValid();" onblur="clearCardValid();" value="#clean_str(cardnum)#" #readonly_str(cardnum)#>
-            </cfoutput>
+        <div class="form-group" ng-show="type == 'Credit/Debit Card'">
+            <label class="control-label col-xs-4">*Card Number</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                </input>
+            </div>
         </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="ExpMonth">*Expiration Date</label>
-        <div class="controls" id="lblCardExpired"></div>
-        <div class="controls">
-            <select id="ExpMonth" name="ExpMonth" onchange="cardExpired();" style="width: 125px; margin-right: 10px;" <cfoutput>#disabled_str(expdate)#</cfoutput>>
-            <option value="" selected>Month</option>
-            <option value="01" <cfif expmonth == "01">selected="selected"</cfif>>01  January</option>
-            <option value="02" <cfif expmonth == "02">selected="selected"</cfif>>02  February</option>
-            <option value="03" <cfif expmonth == "03">selected="selected"</cfif>>03  March</option>
-            <option value="04" <cfif expmonth == "04">selected="selected"</cfif>>04  April</option>
-            <option value="05" <cfif expmonth == "05">selected="selected"</cfif>>05  May</option>
-            <option value="06" <cfif expmonth == "06">selected="selected"</cfif>>06  June</option>
-            <option value="07" <cfif expmonth == "07">selected="selected"</cfif>>07  July</option>
-            <option value="08" <cfif expmonth == "08">selected="selected"</cfif>>08  August</option>
-            <option value="09" <cfif expmonth == "09">selected="selected"</cfif>>09  September</option>
-            <option value="10" <cfif expmonth == "10">selected="selected"</cfif>>10  October</option>
-            <option value="11" <cfif expmonth == "11">selected="selected"</cfif>>11  November</option>
-            <option value="12" <cfif expmonth == "12">selected="selected"</cfif>>12  December</option>
-            </select>
-            <select id="ExpYear" name="ExpYear" onchange="cardExpired();" style="width: 80px;" <cfoutput>#disabled_str(expdate)#</cfoutput>>
-            <option value="" selected>Year</option>
-            <cfset yr = year(now())>
-                <cfloop from="#yr#" to="#(yr + 10)#" index="i">
-                    <cfoutput><option value="#i#" <cfif expyear == i>selected="selected"</cfif>>#i#</option></cfoutput>
-                </cfloop>
+        <div class="form-group" role="form" ng-show="type == 'Credit/Debit Card'">
+                <label class="control-label col-xs-4">*Expiration Date</label>
+            <!-- Single button -->
+            <div class="btn-group">
+                <select class="form-control input-sm">
+                    Month <span class="caret"></span>
+                    <option>01 January</option>
+                    <option>02 February</option>
+                    <option>03 March</option>
+                    <option>04 April</option>
+                    <option>05 May</option>
+                    <option>06 June</option>
+                    <option>07 July</option>
+                    <option>08 August</option>
+                    <option>09 September</option>
+                    <option>10 October</option>
+                    <option>11 November</option>
+                    <option>12 December</option>
                 </select>
+            </div>
+            <!-- Single button -->
+            <div class="btn-group">
+                <select class="form-control input-sm">
+                    Year <span class="caret"></span>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="CvvCode">*CVV Code</label>
-        <div class="controls">
-            <cfoutput>
-                <input type="text" class="input-large" name="CvvCode" id="CvvCode" style="width: 50px; margin-right: 10px;" value="#clean_str(cvv)#" #readonly_str(cvv)#>
-            </cfoutput>
-            <a href="javascript: aboutCvv();">What's this?</a>
+        <div class="form-group" ng-show="type == 'Credit/Debit Card'">
+            <label class="control-label col-xs-4">*CVV Code</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                </input>
+            </div>
         </div>
-    </div>
+        <div class="form-group" ng-show="type == 'ACH / E-Check'">
+            <label class="control-label col-xs-4">*Routing Number</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group" ng-show="type == 'ACH / E-Check'">
+            <label class="control-label col-xs-4">*Bank Acct Number</label>
+            <div class="col-xs-offset-2">
+                <input type="text" class="input-sm" ng-disabled="disabled">
+                </input>
+            </div>
+        </div>
+        <div class="form-group" ng-show="type == 'ACH / E-Check'">
+            <label class="control-label col-xs-4">*Bank Account Type</label>
+            <div class="col-xs-5">
+                <select class="form-control" ng-disabled="disabled">
+                    <option>Checking</option>
+                    <option>Savings</option>
+                </input>
+            </div>
+        </div>
+</container>
 
-    <div class="control-group" style="white-space: nowrap;">
-        <div class="controls">
-            <cfoutput>#opterm.accepted_cards_html()#</cfoutput>
-        </div>
-    </div>
 
-</div>
-<div id="GrpBankInfo">
-    <div class="control-group">
-        <label class="control-label" for="RoutingNum">*Routing Number</label>
-        <div class="controls" id="BankName"></div>
-        <div class="controls" id="divRoutingNumValid" style="font-weight: bold;"></div>
-        <div class="controls">
-            <cfoutput>
-                <input type="text" class="input-large" name="RoutingNum" id="RoutingNum" onblur="getBankName();" value="<cfoutput>#clean_str(routingnum)#</cfoutput>" #readonly_str(routingnum)#>
-            </cfoutput>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="BankAcctNum">*Bank Acct Number</label>
-        <div class="controls">
-            <cfoutput>
-                <input type="text" class="input-large" name="BankAcctNum" id="BankAcctNum" value="<cfoutput>#clean_str(bankacctnum)#</cfoutput>" #readonly_str(bankacctnum)#>
-            </cfoutput>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="BankAcctType">*Bank Account Type</label>
-        <div class="controls" style="margin-bottom: 10px;">
-            <select id="BankAcctType" name="BankAcctType" <cfoutput>#readonly_str(bankaccttype)#</cfoutput>>
-            <option value="1" <cfif ucase(clean_str(bankaccttype)) == "C" or bankaccttype == "">selected="selected"</cfif>>Checking</option>
-            <option value="2" <cfif ucase(clean_str(bankaccttype)) == "S">selected="selected"</cfif>>Savings</option>
-            </select>
-        </div>
-    </div>
-</div>
-<input type="hidden" name="postback" value="1">
+
+<!--&lt;!&ndash;// this is copied from the cpteller page built in cf&ndash;&gt;-->
+<!--<form class="form-horizontal" role="form">-->
+    <!--<div class="form-group">-->
+        <!--<label for="inputEmail1" class="col-lg-2 control-label input-sm">Email</label>-->
+        <!--<div class="col-lg-3">-->
+            <!--<input type="email" class="form-control input-sm" id="inputEmail1" placeholder="Email">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label for="inputPassword1" class="col-lg-2 control-label">Password</label>-->
+        <!--<div class="col-lg-3">-->
+            <!--<input type="text" class="form-control" id="inputPassword1" placeholder="Password">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-lg-offset-2 col-lg-10">-->
+            <!--<div class="checkbox">-->
+                <!--<label>-->
+                    <!--<input type="checkbox"> Remember me-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-lg-offset-2 col-lg-10">-->
+            <!--<button type="submit" class="btn btn-default">Sign in</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</form>-->
+<!--<form class="form-horizontal span4" role="form">-->
+    <!--<div class="form-group">-->
+        <!--<label for="inputEmail1" class="col-lg-2 control-label input-sm">Email</label>-->
+        <!--<div class="col-lg-3">-->
+            <!--<input type="email" class="form-control input-sm" id="inputEmail1" placeholder="Email">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label for="inputPassword1" class="col-lg-2 control-label">Password</label>-->
+        <!--<div class="col-lg-3">-->
+            <!--<input type="text" class="form-control" id="inputPassword1" placeholder="Password">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-lg-offset-2 col-lg-10">-->
+            <!--<div class="checkbox">-->
+                <!--<label>-->
+                    <!--<input type="checkbox"> Remember me-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-lg-offset-2 col-lg-10">-->
+            <!--<button type="submit" class="btn btn-default">Sign in</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</form>-->
+<!--<div class="form-horizontal column-right" name="RequireAccount" id="RequireAccount" value="<cfoutput>#opterm.requireaccount#</cfoutput>">-->
+<!--&lt;!&ndash;<fieldset>&ndash;&gt;-->
+<!--<div class="input-group">-->
+    <!--<label class="control-label col-xs-2" for="Account" id="lblAccount"><cfoutput>#account_label#</cfoutput></label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<div class="input-append">-->
+                <!--<input type="text" class="input-large" name="Account" id="Account" value="#clean_str(account)#" #readonly_str(account)#>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<cfset query = get_custom_fields(op)>-->
+<!--<cfoutput query="query">-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label col-xs-2" for="#name#">#label#</label>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<input type="text" class="input-large" name="#name#" id="#name#" value="#defaultvalue#" maxlength="#maxlength#">-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</cfoutput>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label col-xs-5" for="FirstName">First Name</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="text" class="input-large" name="FirstName" id="FirstName" value="#clean_str(firstname)#" #readonly_str(firstname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group" style="white-space: nowrap;">-->
+    <!--<label class="control-label col-xs-5" for="LastName">Last Name</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<div class="input-append">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="LastName" id="LastName" value="#clean_str(lastname)#" #readonly_str(lastname)#>-->
+            <!--</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="Country">Country</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<select id="Country" name="Country" onchange="selectCountry();" <cfoutput>#disabled_str(country)#</cfoutput>>-->
+        <!--<option value="USA" <cfif ucase(clean_str(country)) == "USA">selected="selected"</cfif>>USA</option>-->
+        <!--<option value="CAN" <cfif ucase(clean_str(country)) == "CAN">selected="selected"</cfif>>Canada</option>-->
+        <!--</select>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="name">Address 1</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="text" class="input-large" name="Address1" id="Address1" value="#clean_str(address1)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="name">Address 2</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="text" class="input-large" name="Address2" id="Address2" value="#clean_str(address2)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="name">City</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="text" class="input-large" name="City" id="City" value="#clean_str(city)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group" id="GrpProvince">-->
+    <!--<label class="control-label" for="validateSelect">Province</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<select id="Province" name="Province" <cfoutput>#disabled_str(province)#</cfoutput>>-->
+        <!--<option selected="selected" value="">Select a Province</option>-->
+        <!--<option value="AB" <cfif ucase(clean_str(province)) == "AB">selected="selected"</cfif>>Alberta</option>-->
+        <!--<option value="BC" <cfif ucase(clean_str(province)) == "BC">selected="selected"</cfif>>British Columbia</option>-->
+        <!--<option value="MB" <cfif ucase(clean_str(province)) == "MB">selected="selected"</cfif>>Manitoba</option>-->
+        <!--<option value="NB" <cfif ucase(clean_str(province)) == "NB">selected="selected"</cfif>>New Brunswick</option>-->
+        <!--<option value="NL" <cfif ucase(clean_str(province)) == "NL">selected="selected"</cfif>>Newfoundland and Labrador</option>-->
+        <!--<option value="NS" <cfif ucase(clean_str(province)) == "NS">selected="selected"</cfif>>Nova Scotia</option>-->
+        <!--<option value="ON" <cfif ucase(clean_str(province)) == "ON">selected="selected"</cfif>>Ontario</option>-->
+        <!--<option value="PE" <cfif ucase(clean_str(province)) == "PE">selected="selected"</cfif>>Prince Edward Island</option>-->
+        <!--<option value="QC" <cfif ucase(clean_str(province)) == "QC">selected="selected"</cfif>>Quebec</option>-->
+        <!--<option value="SK" <cfif ucase(clean_str(province)) == "SK">selected="selected"</cfif>>Saskatchewan</option>-->
+        <!--<option value="NT" <cfif ucase(clean_str(province)) == "NT">selected="selected"</cfif>>Northwest Territories</option>-->
+        <!--<option value="NU" <cfif ucase(clean_str(province)) == "NU">selected="selected"</cfif>>Nunavut</option>-->
+        <!--<option value="YT" <cfif ucase(clean_str(province)) == "YT">selected="selected"</cfif>>Yukon</option>-->
+        <!--</select>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group" id="GrpState">-->
+    <!--<label class="control-label" for="validateSelect">State</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<select id="State" name="State" <cfoutput>#disabled_str(state)#</cfoutput>>-->
+        <!--<option selected="selected" value="">Select a State</option>-->
+        <!--<option value="AL" <cfif ucase(clean_str(state)) == "AL">selected="selected"</cfif>>Alabama</option>-->
+        <!--<option value="AK" <cfif ucase(clean_str(state)) == "AK">selected="selected"</cfif>>Alaska</option>-->
+        <!--<option value="AZ" <cfif ucase(clean_str(state)) == "AZ">selected="selected"</cfif>>Arizona</option>-->
+        <!--<option value="AR" <cfif ucase(clean_str(state)) == "AR">selected="selected"</cfif>>Arkansas</option>-->
+        <!--<option value="CA" <cfif ucase(clean_str(state)) == "CA">selected="selected"</cfif>>California</option>-->
+        <!--<option value="CO" <cfif ucase(clean_str(state)) == "CO">selected="selected"</cfif>>Colorado</option>-->
+        <!--<option value="CT" <cfif ucase(clean_str(state)) == "CT">selected="selected"</cfif>>Connecticut</option>-->
+        <!--<option value="DE" <cfif ucase(clean_str(state)) == "DE">selected="selected"</cfif>>Delaware</option>-->
+        <!--<option value="DC" <cfif ucase(clean_str(state)) == "DC">selected="selected"</cfif>>Dist of Columbia</option>-->
+        <!--<option value="FL" <cfif ucase(clean_str(state)) == "FL">selected="selected"</cfif>>Florida</option>-->
+        <!--<option value="GA" <cfif ucase(clean_str(state)) == "GA">selected="selected"</cfif>>Georgia</option>-->
+        <!--<option value="HI" <cfif ucase(clean_str(state)) == "HI">selected="selected"</cfif>>Hawaii</option>-->
+        <!--<option value="ID" <cfif ucase(clean_str(state)) == "ID">selected="selected"</cfif>>Idaho</option>-->
+        <!--<option value="IL" <cfif ucase(clean_str(state)) == "IL">selected="selected"</cfif>>Illinois</option>-->
+        <!--<option value="IN" <cfif ucase(clean_str(state)) == "IN">selected="selected"</cfif>>Indiana</option>-->
+        <!--<option value="IA" <cfif ucase(clean_str(state)) == "IA">selected="selected"</cfif>>Iowa</option>-->
+        <!--<option value="KS" <cfif ucase(clean_str(state)) == "KS">selected="selected"</cfif>>Kansas</option>-->
+        <!--<option value="KY" <cfif ucase(clean_str(state)) == "KY">selected="selected"</cfif>>Kentucky</option>-->
+        <!--<option value="LA" <cfif ucase(clean_str(state)) == "LA">selected="selected"</cfif>>Louisiana</option>-->
+        <!--<option value="ME" <cfif ucase(clean_str(state)) == "ME">selected="selected"</cfif>>Maine</option>-->
+        <!--<option value="MD" <cfif ucase(clean_str(state)) == "MD">selected="selected"</cfif>>Maryland</option>-->
+        <!--<option value="MA" <cfif ucase(clean_str(state)) == "MA">selected="selected"</cfif>>Massachusetts</option>-->
+        <!--<option value="MI" <cfif ucase(clean_str(state)) == "MI">selected="selected"</cfif>>Michigan</option>-->
+        <!--<option value="MN" <cfif ucase(clean_str(state)) == "MN">selected="selected"</cfif>>Minnesota</option>-->
+        <!--<option value="MS" <cfif ucase(clean_str(state)) == "MS">selected="selected"</cfif>>Mississippi</option>-->
+        <!--<option value="MO" <cfif ucase(clean_str(state)) == "MO">selected="selected"</cfif>>Missouri</option>-->
+        <!--<option value="MT" <cfif ucase(clean_str(state)) == "MT">selected="selected"</cfif>>Montana</option>-->
+        <!--<option value="NE" <cfif ucase(clean_str(state)) == "NE">selected="selected"</cfif>>Nebraska</option>-->
+        <!--<option value="NV" <cfif ucase(clean_str(state)) == "NV">selected="selected"</cfif>>Nevada</option>-->
+        <!--<option value="NH" <cfif ucase(clean_str(state)) == "NH">selected="selected"</cfif>>New Hampshire</option>-->
+        <!--<option value="NJ" <cfif ucase(clean_str(state)) == "NJ">selected="selected"</cfif>>New Jersey</option>-->
+        <!--<option value="NM" <cfif ucase(clean_str(state)) == "NM">selected="selected"</cfif>>New Mexico</option>-->
+        <!--<option value="NY" <cfif ucase(clean_str(state)) == "NY">selected="selected"</cfif>>New York</option>-->
+        <!--<option value="NC" <cfif ucase(clean_str(state)) == "NC">selected="selected"</cfif>>North Carolina</option>-->
+        <!--<option value="ND" <cfif ucase(clean_str(state)) == "ND">selected="selected"</cfif>>North Dakota</option>-->
+        <!--<option value="OH" <cfif ucase(clean_str(state)) == "OH">selected="selected"</cfif>>Ohio</option>-->
+        <!--<option value="OK" <cfif ucase(clean_str(state)) == "OK">selected="selected"</cfif>>Oklahoma</option>-->
+        <!--<option value="OR" <cfif ucase(clean_str(state)) == "OR">selected="selected"</cfif>>Oregon</option>-->
+        <!--<option value="PA" <cfif ucase(clean_str(state)) == "PA">selected="selected"</cfif>>Pennsylvania</option>-->
+        <!--<option value="PR" <cfif ucase(clean_str(state)) == "PR">selected="selected"</cfif>>Puerto Rico</option>-->
+        <!--<option value="RI" <cfif ucase(clean_str(state)) == "RI">selected="selected"</cfif>>Rhode Island</option>-->
+        <!--<option value="SC" <cfif ucase(clean_str(state)) == "SC">selected="selected"</cfif>>South Carolina</option>-->
+        <!--<option value="SD" <cfif ucase(clean_str(state)) == "SD">selected="selected"</cfif>>South Dakota</option>-->
+        <!--<option value="TN" <cfif ucase(clean_str(state)) == "TN">selected="selected"</cfif>>Tennessee</option>-->
+        <!--<option value="TX" <cfif ucase(clean_str(state)) == "TX">selected="selected"</cfif>>Texas</option>-->
+        <!--<option value="UT" <cfif ucase(clean_str(state)) == "UT">selected="selected"</cfif>>Utah</option>-->
+        <!--<option value="VT" <cfif ucase(clean_str(state)) == "VT">selected="selected"</cfif>>Vermont</option>-->
+        <!--<option value="VA" <cfif ucase(clean_str(state)) == "VA">selected="selected"</cfif>>Virginia</option>-->
+        <!--<option value="VI" <cfif ucase(clean_str(state)) == "VI">selected="selected"</cfif>>Virgin Islands</option>-->
+        <!--<option value="WA" <cfif ucase(clean_str(state)) == "WA">selected="selected"</cfif>>Washington</option>-->
+        <!--<option value="WV" <cfif ucase(clean_str(state)) == "WV">selected="selected"</cfif>>West Virginia</option>-->
+        <!--<option value="WI" <cfif ucase(clean_str(state)) == "WI">selected="selected"</cfif>>Wisconsin</option>-->
+        <!--<option value="WY" <cfif ucase(clean_str(state)) == "WY">selected="selected"</cfif>>Wyoming</option>-->
+        <!--</select>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" id="lblZipCode" for="name">*Zip Code</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="text" class="input-large" name="ZipCode" id="ZipCode" value="#clean_str(zipcode)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="name">Email</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="email" class="input-large" name="Email" id="Email" value="#clean_str(email)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="name">Phone</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<cfoutput>-->
+            <!--<input type="tel" class="input-large" name="Phone" id="Phone" value="#clean_str(phone)#" #readonly_str(lastname)#>-->
+        <!--</cfoutput>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="span24">-->
+    <!--<div class="widget">-->
+        <!--<div class="widget-content" style="border: 0; border-radius: 0;">-->
+            <!--<form method="post" class="form-horizontal" name="form" id="portalform">-->
+                <!--<p>-->
+                <!--<table>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td style="border-right: 1px solid #AAA; vertical-align: top; padding-right: 15px;">-->
+                            <!--<h4 style="text-align: center">Payer Information</h4>-->
+                            <!--<p>-->
+                                <!--<cfinclude template="payer_info.cfm">-->
+                            <!--</p>-->
+                        <!--</td>-->
+                        <!--<td style="vertical-align: top; padding-right: 15px; padding-left: 15px;">-->
+                            <!--<h4 style="text-align: center">Payment Information</h4>-->
+                            <!--<p>-->
+                            <!--<table>-->
+                                <!--<tbody>-->
+                                <!--<tr>-->
+                                    <!--<td style="border-bottom: 1px solid #AAA; vertical-align: top; padding-bottom: 10px;">-->
+                                        <!--<fieldset>-->
+                                            <!--<div class="control-group">-->
+                                                <!--<label class="control-label" for="Amount">*Payment Amount</label>-->
+                                                <!--<div class="col-xs-offset-2">-->
+                                                    <!--<input type="text" class="input-large" name="Amount" id="Amount">-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="control-group">-->
+                                                <!--<label class="control-label" for="textarea">Comments</label>-->
+                                                <!--<div class="col-xs-offset-2">-->
+                                                    <!--<textarea class="input-large" name="Comment" id="Comment" rows="3"></textarea>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</fieldset>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td style="padding-top: 25px;">-->
+                                        <!--<cfinclude template="payment_info.cfm">-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                <!--</p>-->
+                <!--</td>-->
+                <!--<td style="border-left: 1px solid #AAA; vertical-align: top; padding-left: 10px;">-->
+                    <!--<h4 style="text-align: center;">Instructions</h4>-->
+                    <!--<p>-->
+                        <!--<cfoutput>#get_disclaimer_text(op)#</cfoutput>-->
+                    <!--</p>-->
+                <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+                <!--</table>-->
+                <!--</p>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="control-group">-->
+    <!--<label class="control-label" for="validateSelect">*Payment Method</label>-->
+    <!--<div class="col-xs-offset-2">-->
+        <!--<select id="PaymentMethod" name="PaymentMethod" onchange="setPaymentMethod();" <cfoutput>#disabled_str(paymentmethod)#</cfoutput>>-->
+        <!--<option value="CC" <cfif ucase(clean_str(paymentmethod)) == "CC">selected="selected"</cfif>>Credit/Debit Card</option>-->
+        <!--<option value="ACH"<cfif ucase(clean_str(paymentmethod)) == "ACH">selected="selected"</cfif>>ACH / E-Check</option>-->
+        <!--</select>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div id="GrpCardInfo">-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="PayerName">*Name on Card</label>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="CardName" id="CardName" value="#clean_str(cardname)#" #readonly_str(cardname)#>-->
+            <!--</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="control-group">-->
+        <!--<span id="CardNumValidIcon"></span>-->
+        <!--<label class="control-label" for="CardNum">*Card Number</label>-->
+        <!--<div class="col-xs-offset-2" id="divCardValid" style="font-weight: bold;"></div>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="CardNum" id="CardNum" onkeyup="getCardValid();" onblur="clearCardValid();" value="#clean_str(cardnum)#" #readonly_str(cardnum)#>-->
+            <!--</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="ExpMonth">*Expiration Date</label>-->
+        <!--<div class="col-xs-offset-2" id="lblCardExpired"></div>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<select id="ExpMonth" name="ExpMonth" onchange="cardExpired();" style="width: 125px; margin-right: 10px;" <cfoutput>#disabled_str(expdate)#</cfoutput>>-->
+            <!--<option value="" selected>Month</option>-->
+            <!--<option value="01" <cfif expmonth == "01">selected="selected"</cfif>>01  January</option>-->
+            <!--<option value="02" <cfif expmonth == "02">selected="selected"</cfif>>02  February</option>-->
+            <!--<option value="03" <cfif expmonth == "03">selected="selected"</cfif>>03  March</option>-->
+            <!--<option value="04" <cfif expmonth == "04">selected="selected"</cfif>>04  April</option>-->
+            <!--<option value="05" <cfif expmonth == "05">selected="selected"</cfif>>05  May</option>-->
+            <!--<option value="06" <cfif expmonth == "06">selected="selected"</cfif>>06  June</option>-->
+            <!--<option value="07" <cfif expmonth == "07">selected="selected"</cfif>>07  July</option>-->
+            <!--<option value="08" <cfif expmonth == "08">selected="selected"</cfif>>08  August</option>-->
+            <!--<option value="09" <cfif expmonth == "09">selected="selected"</cfif>>09  September</option>-->
+            <!--<option value="10" <cfif expmonth == "10">selected="selected"</cfif>>10  October</option>-->
+            <!--<option value="11" <cfif expmonth == "11">selected="selected"</cfif>>11  November</option>-->
+            <!--<option value="12" <cfif expmonth == "12">selected="selected"</cfif>>12  December</option>-->
+            <!--</select>-->
+            <!--<select id="ExpYear" name="ExpYear" onchange="cardExpired();" style="width: 80px;" <cfoutput>#disabled_str(expdate)#</cfoutput>>-->
+            <!--<option value="" selected>Year</option>-->
+            <!--<cfset yr = year(now())>-->
+                <!--<cfloop from="#yr#" to="#(yr + 10)#" index="i">-->
+                    <!--<cfoutput><option value="#i#" <cfif expyear == i>selected="selected"</cfif>>#i#</option></cfoutput>-->
+                <!--</cfloop>-->
+                <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="CvvCode">*CVV Code</label>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="CvvCode" id="CvvCode" style="width: 50px; margin-right: 10px;" value="#clean_str(cvv)#" #readonly_str(cvv)#>-->
+            <!--</cfoutput>-->
+            <!--<a href="javascript: aboutCvv();">What's this?</a>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="control-group" style="white-space: nowrap;">-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>#opterm.accepted_cards_html()#</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+<!--<div id="GrpBankInfo">-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="RoutingNum">*Routing Number</label>-->
+        <!--<div class="col-xs-offset-2" id="BankName"></div>-->
+        <!--<div class="col-xs-offset-2" id="divRoutingNumValid" style="font-weight: bold;"></div>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="RoutingNum" id="RoutingNum" onblur="getBankName();" value="<cfoutput>#clean_str(routingnum)#</cfoutput>" #readonly_str(routingnum)#>-->
+            <!--</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="BankAcctNum">*Bank Acct Number</label>-->
+        <!--<div class="col-xs-offset-2">-->
+            <!--<cfoutput>-->
+                <!--<input type="text" class="input-large" name="BankAcctNum" id="BankAcctNum" value="<cfoutput>#clean_str(bankacctnum)#</cfoutput>" #readonly_str(bankacctnum)#>-->
+            <!--</cfoutput>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="control-group">-->
+        <!--<label class="control-label" for="BankAcctType">*Bank Account Type</label>-->
+        <!--<div class="col-xs-offset-2" style="margin-bottom: 10px;">-->
+            <!--<select id="BankAcctType" name="BankAcctType" <cfoutput>#readonly_str(bankaccttype)#</cfoutput>>-->
+            <!--<option value="1" <cfif ucase(clean_str(bankaccttype)) == "C" or bankaccttype == "">selected="selected"</cfif>>Checking</option>-->
+            <!--<option value="2" <cfif ucase(clean_str(bankaccttype)) == "S">selected="selected"</cfif>>Savings</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<input type="hidden" name="postback" value="1">-->
